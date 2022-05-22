@@ -10,7 +10,9 @@ const Parts = () => {
     data: partsData,
     isFetching,
   } = useQuery("partsData", () =>
-    fetch("http://localhost:5000/parts").then((res) => res.json())
+    fetch("https://stark-cliffs-55109.herokuapp.com/parts").then((res) =>
+      res.json()
+    )
   );
 
   console.log(partsData);
@@ -18,9 +20,11 @@ const Parts = () => {
     return <Loading></Loading>;
   }
   return (
-    <div>
-      <h2>Parts:{partsData.length}</h2>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+    <div className="my-20 ">
+      <h2 className="uppercase text-center py-7 text-blue-900">
+        <span className="text-5xl ">Parts</span>
+      </h2>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-28 ">
         {partsData.map((partData) => (
           <PartsData key={partData} partData={partData}></PartsData>
         ))}
