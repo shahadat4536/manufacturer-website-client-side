@@ -8,6 +8,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
+import Loading from "../Shared/Loading";
 
 const Login = () => {
   const {
@@ -26,6 +27,19 @@ const Login = () => {
 
     console.log(data);
   };
+  let errorElement;
+  if (gLoading || loading) {
+    return <Loading></Loading>;
+  }
+  if (error || gError) {
+    errorElement = (
+      <div>
+        <small className="text-center text-red-600">
+          <p>{error.message || gError.message}</p>
+        </small>
+      </div>
+    );
+  }
   return (
     <div className="flex justify-center items-center my-10">
       <div class="card w-96 bg-base-100 shadow-xl">
@@ -104,7 +118,9 @@ const Login = () => {
 
             <input type="submit" value="Sign Up" class="btn w-full max-w-xs" />
           </form>
-          <p className="text-center">
+
+          {errorElement}
+          <p className="text-center  mt-4">
             Not a member?
             <Link className="text-blue-400 pl-2" to="/signup">
               Sign up now
