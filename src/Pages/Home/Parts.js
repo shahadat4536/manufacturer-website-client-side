@@ -10,9 +10,15 @@ const Parts = () => {
     data: partsData,
     isFetching,
   } = useQuery("partsData", () =>
-    fetch("https://stark-cliffs-55109.herokuapp.com/parts").then((res) =>
-      res.json()
-    )
+    fetch("https://stark-cliffs-55109.herokuapp.com/parts", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
+      console.log("555555555555555555555555555555", res);
+      return res.json();
+    })
   );
 
   console.log(partsData);

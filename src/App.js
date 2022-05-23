@@ -1,4 +1,9 @@
 import { Route, Routes } from "react-router-dom";
+import AllUsers from "./Pages/Dashboard/AllUsers";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyOrder from "./Pages/Dashboard/MyOrder";
+import MyProfile from "./Pages/Dashboard/MyProfile";
+import Review from "./Pages/Dashboard/Review";
 import BuyParts from "./Pages/Home/BuyParts";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/LogIn/Login";
@@ -15,6 +20,12 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+        <Route path="dashboard" element={<Dashboard></Dashboard>}>
+          <Route index element={<MyOrder></MyOrder>}></Route>
+          <Route path="review" element={<Review></Review>}></Route>
+          <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
+          <Route path="users" element={<AllUsers></AllUsers>}></Route>
+        </Route>
         <Route
           path="/parts/:id"
           element={
