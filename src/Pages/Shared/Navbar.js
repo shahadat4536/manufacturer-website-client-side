@@ -1,8 +1,36 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
 
 const Navbar = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const logout = () => {
+    signOut(auth);
+  };
+  const menuItems = (
+    <>
+      <li>
+        <NavLink className="mx-1" to="/">
+          Home
+        </NavLink>
+        <NavLink className="mx-1" to="/signup">
+          Test
+        </NavLink>
+
+        {user ? (
+          <button onClick={logout} class="btn btn-ghost">
+            Sign Out
+          </button>
+        ) : (
+          <NavLink to="/login">Login</NavLink>
+        )}
+      </li>
+    </>
+  );
   return (
-    <div class="navbar bg-base-100">
+    <div class="navbar bg-base-300 sticky">
       <div class="navbar-start">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -25,72 +53,13 @@ const Navbar = () => {
             tabindex="0"
             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li tabindex="0">
-              <a class="justify-between">
-                Parent
-                <svg
-                  class="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </a>
-              <ul class="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {menuItems}
           </ul>
         </div>
         <a class="btn btn-ghost normal-case text-xl">Crypto Computer</a>
       </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li tabindex="0">
-            <a>
-              Parent
-              <svg
-                class="fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-              </svg>
-            </a>
-            <ul class="p-2">
-              <li>
-                <a>Submenu 1</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
-      </div>
-      <div class="navbar-end">
-        <a class="btn">Get started</a>
+      <div class="navbar-end hidden lg:flex">
+        <ul class="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
     </div>
   );
