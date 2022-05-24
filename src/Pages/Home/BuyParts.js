@@ -25,12 +25,35 @@ const BuyParts = () => {
   if (loading) {
     return <Loading></Loading>;
   }
+  const email = user.email;
   const onSubmit = async (data) => {
     const currentQuantity = data.quantity;
+
     const minOrder2 = minOrder - 1;
-    if (currentQuantity < minOrder) {
+    if (currentQuantity < minOrder || currentQuantity > availableQuantity) {
       toast.error("plause submit minimun");
       return;
+    } else {
+      const paymentAmount = currentQuantity * price;
+      fetch("http://localhost:5000/orders", {
+        method: "POST",
+        body: JSON.stringify({
+          product: name,
+          quantity: currentQuantity,
+          paymentAmount: paymentAmount,
+          email: data.email,
+          billerName: data.name,
+          billerPhone: data.phone,
+          billerAdders: data.adders,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
     }
     console.log(data);
   };
@@ -101,7 +124,7 @@ const BuyParts = () => {
                 )}
               </label>
             </div>
-            {/* ---------------------------------------------- Name field end ----------------------------------------------*/}
+            {/* ---------------------------------------------- Name field end --------------------------------------------------*/}
             {/* ---------------------------------------------- email field  start ----------------------------------------------*/}
             <div class="form-control w-full max-w-xs">
               <label class="label">

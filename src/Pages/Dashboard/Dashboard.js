@@ -47,6 +47,13 @@ const Dashboard = () => {
               </NavLink>
             </li>
           )}
+          {admin && (
+            <li>
+              <NavLink className="my-2" to="/dashboard/addproducts">
+                Add Products
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </div>
