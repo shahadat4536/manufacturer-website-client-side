@@ -14,7 +14,6 @@ const BuyParts = () => {
     fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
   );
 
-  console.log(buyPartsData);
   const { name, image, description, minOrder, availableQuantity, price } =
     buyPartsData || {};
   const {
@@ -27,13 +26,13 @@ const BuyParts = () => {
     return <Loading></Loading>;
   }
   const onSubmit = async (data) => {
-    console.log(data);
     const currentQuantity = data.quantity;
     const minOrder2 = minOrder - 1;
     if (currentQuantity < minOrder) {
       toast.error("plause submit minimun");
       return;
     }
+    console.log(data);
   };
   return (
     <div className="bg-slate-100 my-24">
