@@ -1,8 +1,11 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import AllUsers from "./Pages/Dashboard/AllUsers";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyOrder from "./Pages/Dashboard/MyOrder";
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import RequireAdmin from "./Pages/Dashboard/RequireAdmin";
 import Review from "./Pages/Dashboard/Review";
 import BuyParts from "./Pages/Home/BuyParts";
 import Home from "./Pages/Home/Home";
@@ -24,7 +27,14 @@ function App() {
           <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path="review" element={<Review></Review>}></Route>
           <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
-          <Route path="users" element={<AllUsers></AllUsers>}></Route>
+          <Route
+            path="users"
+            element={
+              <RequireAdmin>
+                <AllUsers></AllUsers>
+              </RequireAdmin>
+            }
+          ></Route>
         </Route>
         <Route
           path="/parts/:id"
@@ -37,6 +47,7 @@ function App() {
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
       </Routes>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
