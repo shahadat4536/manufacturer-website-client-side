@@ -10,13 +10,13 @@ import { toast } from "react-toastify";
 const BuyParts = () => {
   const { id } = useParams();
   const [user, loading, error] = useAuthState(auth);
-  const { data: buyPartsData, isLoading } = useQuery("buyParts", () =>
+  const [minimumOrder, setMinimumOrder] = useState([]);
+  const { data: buyPartsData } = useQuery("buyParts", () =>
     fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
   );
 
-  console.log(buyPartsData);
   const { name, image, description, minOrder, availableQuantity, price } =
-    buyPartsData || {};
+    buyPartsData;
   const {
     register,
     formState: { errors },
@@ -203,5 +203,3 @@ const BuyParts = () => {
     </div>
   );
 };
-
-export default BuyParts;

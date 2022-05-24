@@ -8,7 +8,7 @@ const Parts = () => {
     isLoading,
     error,
     data: partsData,
-    isFetching,
+    refetch,
   } = useQuery("partsData", () =>
     fetch("https://stark-cliffs-55109.herokuapp.com/parts", {
       method: "GET",

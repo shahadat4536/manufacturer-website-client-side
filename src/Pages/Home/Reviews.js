@@ -1,39 +1,21 @@
-import React from "react";
-import people1 from "../../assets/people1.png";
-import people2 from "../../assets/people2.png";
-import people3 from "../../assets/people3.png";
+import React, { useEffect, useState } from "react";
+import Review from "../Home/Review";
+
 const Reviews = () => {
-  const reviews = [
-    {
-      _id: 1,
-      name: "Winson Herry",
-      location: "California",
-      review:
-        "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-      img: people1,
-    },
-    {
-      _id: 2,
-      name: "Winson Herry",
-      location: "California",
-      review:
-        "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-      img: people2,
-    },
-    {
-      _id: 2,
-      name: "Winson Herry",
-      location: "California",
-      review:
-        "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-      img: people3,
-    },
-  ];
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/review")
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
   return (
-    <div>
-      {reviews.map((review) => (
-        <Reviews key={review._id} review={review}></Reviews>
-      ))}
+    <div className="my-8">
+      <h2 className="text-center text-4xl">Review</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mx-auto">
+        {reviews.map((review) => (
+          <Review key={review._id} review={review}></Review>
+        ))}
+      </div>
     </div>
   );
 };

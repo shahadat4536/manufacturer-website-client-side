@@ -7,8 +7,8 @@ const MyProfile = () => {
   return (
     <div>
       <h2>MyProfile</h2>
-      <p className="text-4xl">Name:{user.displayName}</p>
-      <p>Email:{user.email}</p>
+      <p className="text-4xl">Name:{user?.displayName}</p>
+      <p>Email:{user?.email}</p>
     </div>
   );
 };
