@@ -23,8 +23,10 @@ const AddProducts = () => {
     })
       .then((res) => res.json())
       .then((result) => {
+        console.log(result);
         if (result.success) {
           const img = result.data.url;
+          console.log(img);
           fetch("http://localhost:5000/parts", {
             method: "POST",
             body: JSON.stringify({
@@ -43,6 +45,7 @@ const AddProducts = () => {
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
+              reset();
             });
         }
       });
@@ -50,7 +53,7 @@ const AddProducts = () => {
     // console.log(data);
   };
   return (
-    <div>
+    <div className="px-6 py-6">
       <div class="card lg:w-lg bg-base-100 shadow-xl">
         <div class="card-body">
           <h2 class="card-title">Add Products</h2>
@@ -211,7 +214,7 @@ const AddProducts = () => {
             <input
               type="submit"
               value="Add Product"
-              class="btn w-full max-w-xs my-7"
+              class="btn w-full my-7 text-center"
             />
           </form>
         </div>

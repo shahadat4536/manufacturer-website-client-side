@@ -16,7 +16,7 @@ const Parts = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     }).then((res) => {
-      console.log("555555555555555555555555555555", res);
+      console.log("55", res);
       return res.json();
     })
   );

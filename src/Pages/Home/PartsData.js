@@ -11,7 +11,9 @@ const PartsData = ({ partData }) => {
         <img src={partData.image} alt="Shoes" class="rounded-xl " />
       </figure>
       <div class="card-body">
-        <h2 class="text-3xl font-semibold">{partData.name}</h2>
+        <h2 class="text-xl  text-ellipsis uppercase text-blue-900">
+          {partData.name}
+        </h2>
         <p className="text-justify">
           {" "}
           <small>{partData.description}</small>

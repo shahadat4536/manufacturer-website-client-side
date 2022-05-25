@@ -54,6 +54,13 @@ const Dashboard = () => {
               </NavLink>
             </li>
           )}
+          {admin && (
+            <li>
+              <NavLink className="my-2" to="/dashboard/manageproducts">
+                Manage Products
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </div>
