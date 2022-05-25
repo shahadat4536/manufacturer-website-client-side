@@ -27,8 +27,8 @@ const Parts = () => {
   }
   return (
     <div className="my-20 ">
-      <h2 className="uppercase text-center py-7 text-blue-900">
-        <span className="text-5xl ">Parts</span>
+      <h2 className="uppercase pl-8 py-4 my-16 text-gray-100 bg-gradient-to-r from-cyan-500 to-blue-500">
+        <span className="text-5xl ">Products</span>
       </h2>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-28 ">
         {partsData.map((partData) => (
