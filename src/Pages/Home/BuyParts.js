@@ -14,7 +14,7 @@ const BuyParts = () => {
     fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
   );
 
-  const { name, image, description, minOrder, availableQuantity, price } =
+  const { name, img, description, minOrder, availableQuantity, price } =
     buyPartsData || {};
   const {
     register,
@@ -22,11 +22,12 @@ const BuyParts = () => {
     handleSubmit,
     reset,
   } = useForm();
-  if (loading) {
+  if (loading || isLoading) {
     return <Loading></Loading>;
   }
   const email = user.email;
   const onSubmit = async (data) => {
+    console.log(data);
     const currentQuantity = data.quantity;
 
     const minOrder2 = minOrder - 1;
@@ -41,8 +42,8 @@ const BuyParts = () => {
           product: name,
           quantity: currentQuantity,
           paymentAmount: paymentAmount,
-          email: data.email,
-          billerName: data.name,
+          email: user.email,
+          billerName: user.displayName,
           billerPhone: data.phone,
           billerAdders: data.adders,
         }),
@@ -53,16 +54,34 @@ const BuyParts = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          const updateQuantityC = availableQuantity - currentQuantity;
+          const updateQuantity = Number(updateQuantityC);
+
+          console.log(updateQuantity, id);
+          // fetch(`http://localhost:5000/order/${id}`);
+          // fetch(`http://localhost:5000/order/${id}`, {
+          //   method: "PUT",
+          //   body: JSON.stringify({
+          //     availableQuantity: updateQuantity,
+          //   }),
+          //   headers: {
+          //     "Content-type": "application/json; charset=UTF-8",
+          //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          //   },
+          // })
+          //   .then((rsc) => rsc.json())
+          //   .then((data) => {
+          //     console.log("update quantity", data);
+          //   });
         });
     }
-    console.log(data);
   };
   return (
     <div className="bg-slate-100 my-24">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="w-9/12 grid grid-cols-2 border-2 border-black py-28">
           <div className="flex justify-center items-center">
-            <img src={image} alt="" />
+            <img src={img} alt="" />
           </div>
           <div>
             <label className="text-2xl" htmlFor="">

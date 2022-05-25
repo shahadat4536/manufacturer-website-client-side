@@ -8,7 +8,7 @@ const PartsData = ({ partData }) => {
   return (
     <div class="card lg:max-w-lg bg-base-100 shadow-xl">
       <figure class="px-10 pt-10">
-        <img src={partData.image} alt="Shoes" class="rounded-xl " />
+        <img src={partData.img} alt="Shoes" class="rounded-xl " />
       </figure>
       <div class="card-body">
         <h2 class="text-xl  text-ellipsis uppercase text-blue-900">
