@@ -19,6 +19,9 @@ const Navbar = () => {
         <NavLink className="mx-1" to="/blog">
           Blog
         </NavLink>
+        <NavLink className="mx-1" to="/myportFolio">
+          PortFolio
+        </NavLink>
         {user && (
           <NavLink className="mx-1" to="/dashboard">
             Dashboard

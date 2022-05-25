@@ -15,6 +15,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/LogIn/Login";
 import RequireAuth from "./Pages/LogIn/RequireAuth";
 import SignUp from "./Pages/LogIn/SignUp";
+import MyPortFolio from "./Pages/MyPortFolio";
 import Blogs from "./Pages/Shared/Blogs";
 import Navbar from "./Pages/Shared/Navbar";
 import NotFound from "./Pages/Shared/NotFound";
@@ -27,6 +28,10 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+        <Route
+          path="/myportFolio"
+          element={<MyPortFolio></MyPortFolio>}
+        ></Route>
         <Route
           path="dashboard"
           element={
