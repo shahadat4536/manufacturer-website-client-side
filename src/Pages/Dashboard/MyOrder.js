@@ -26,7 +26,7 @@ const MyOrder = () => {
   if (isLoading || loading) {
     return <Loading></Loading>;
   }
-
+  console.log(myOrderDatas);
   return (
     // <div>
     //   <h2>MyOrder</h2>
@@ -34,8 +34,8 @@ const MyOrder = () => {
     //     <p>{myOrderData.product}</p>
     //   ))}
     // </div>
-    <div class="overflow-x-auto">
-      <table class="table table-compact w-1/2 ">
+    <div class="overflow-x-auto ">
+      <table class="table sm:table-compact w-1/2 ">
         <thead>
           <tr>
             <th></th>
@@ -74,13 +74,18 @@ const MyOrder = () => {
                 )}
               </td>
               <td>
-                <label
-                  onClick={() => setOrderDelete(myOrderData)}
-                  for="delete-confirm-modal"
-                  class="btn modal-button btn-xs btn-error"
-                >
-                  Cancel Order
-                </label>
+                {!myOrderData.status && (
+                  <label
+                    onClick={() => setOrderDelete(myOrderData)}
+                    for="delete-confirm-modal"
+                    class="btn modal-button btn-xs btn-error"
+                  >
+                    Cancel Order
+                  </label>
+                )}
+                {myOrderData?.status && (
+                  <p className="btn btn-xs btn-disabled"> Cancel Order</p>
+                )}
               </td>
             </tr>
           ))}
