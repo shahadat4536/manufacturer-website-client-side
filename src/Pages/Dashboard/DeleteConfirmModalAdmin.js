@@ -3,7 +3,7 @@ import React from "react";
 const DeleteConfirmModalAdmin = ({ orderDelete, refetch, setOrderDelete }) => {
   const handleDelete = (id) => {
     console.log(id);
-    const url = `http://localhost:5000/parts/${id}`;
+    const url = `https://stark-cliffs-55109.herokuapp.com/parts/${id}`;
     fetch(url, {
       method: "DELETE",
 

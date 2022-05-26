@@ -18,7 +18,7 @@ const Review = () => {
       review: data.review,
       ratting: data.ratting,
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://stark-cliffs-55109.herokuapp.com/reviews", {
       method: "POST",
       body: JSON.stringify(reviews),
       headers: {

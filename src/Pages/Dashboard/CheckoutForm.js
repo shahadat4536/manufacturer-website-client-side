@@ -23,7 +23,7 @@ const CheckoutForm = ({ orders }) => {
   //     paymentAmount
   //   );
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://stark-cliffs-55109.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -80,7 +80,7 @@ const CheckoutForm = ({ orders }) => {
         order: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:5000/orders/${_id}`, {
+      fetch(`https://stark-cliffs-55109.herokuapp.com/orders/${_id}`, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json; charset=UTF-8",

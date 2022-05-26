@@ -27,7 +27,7 @@ const AddProducts = () => {
         if (result.success) {
           const img = result.data.url;
           console.log(img);
-          fetch("http://localhost:5000/parts", {
+          fetch("https://stark-cliffs-55109.herokuapp.com/parts", {
             method: "POST",
             body: JSON.stringify({
               img: img,
