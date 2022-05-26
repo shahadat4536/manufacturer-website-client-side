@@ -3,7 +3,7 @@ import React from "react";
 const Blogs = () => {
   return (
     <div className=" grid grid-cols-1 gap-9  items-center">
-      <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card w-60 lg:w-96  bg-base-100 shadow-xl">
         <div class="card-body">
           <h2 class="card-title">
             1. How will you improve the performance of a React Application?
@@ -22,7 +22,7 @@ const Blogs = () => {
           </ul>
         </div>
       </div>
-      <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card w-60 lg:w-96 bg-base-100 shadow-xl">
         <div class="card-body">
           <h2 class="card-title">
             2 What are the different ways to manage a state in a React
@@ -36,10 +36,22 @@ const Blogs = () => {
           </ul>
         </div>
       </div>
-      <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card w-60 lg:w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title">3.How does prototypical inheritance work?</h2>
+
+          <p>
+            In JavaScript, an object can inherit properties of another object.
+            The object from where the properties are inherited is named
+            prototype. Following the example, you can make pet a prototype of
+            cat which will then inherit legs property.
+          </p>
+        </div>
+      </div>
+      <div class="card w-60 lg:w-96 bg-base-100 shadow-xl">
         <div class="card-body">
           <h2 class="card-title">
-            3.What is a unit test? Why should write unit tests?
+            4.What is a unit test? Why should write unit tests?
           </h2>
           <p>What is a unit test?</p>
           <p>
@@ -62,7 +74,7 @@ const Blogs = () => {
         </div>
       </div>
 
-      <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card w-60 lg:w-96 bg-base-100 shadow-xl">
         <div class="card-body">
           <h2 class="card-title">
             5 . Why you do not set the state directly in React. For example, if
