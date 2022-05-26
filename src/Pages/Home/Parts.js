@@ -44,7 +44,7 @@ const Parts = () => {
       </h2>
       <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5  ">
         {partsData.map((partData) => (
-          <PartsData key={partData} partData={partData}></PartsData>
+          <PartsData key={partData._id} partData={partData}></PartsData>
         ))}
       </div>
     </div>
