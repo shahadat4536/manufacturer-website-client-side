@@ -40,8 +40,11 @@ const BuyParts = () => {
     const currentQuantity = data.quantity;
 
     const minOrder2 = minOrder - 1;
-    if (currentQuantity < minOrder || currentQuantity > availableQuantity) {
-      toast.error("plause submit minimun");
+    if (currentQuantity < minOrder) {
+      toast.error(`Your Order Quantity Minimum ${minOrder}`);
+      return;
+    } else if (currentQuantity > availableQuantity) {
+      toast.error(`Your Order Quantity High to available Quantity `);
       return;
     } else {
       const paymentAmount = currentQuantity * price;
