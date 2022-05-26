@@ -7,7 +7,7 @@ import background1 from "../../assets/background1.png";
 const BusinessSummary = () => {
   return (
     <div
-      className="my-6  min-h-screen"
+      className="my-6  "
       style={{
         backgroundImage: `url(${background1})`,
         backgroundSize: "cover",
