@@ -30,7 +30,7 @@ const Parts = () => {
       <h2 className="uppercase pl-8 py-4 my-16 text-gray-100 bg-gradient-to-r from-cyan-500 to-blue-500">
         <span className="text-5xl ">Products</span>
       </h2>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-28 ">
+      <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5  ">
         {partsData
           .slice(0, 6)
           .reverse()

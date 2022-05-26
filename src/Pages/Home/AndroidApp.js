@@ -5,9 +5,9 @@ import appStore from "../../assets/appStore.png";
 
 const AndroidApp = () => {
   return (
-    <div class="hero min-h-screen ">
+    <div class="hero min-h-screen  ">
       <div class="hero-content flex-col lg:flex-row-reverse">
-        <img src={androidApp} class="max-w-lg rounded-lg shadow-2xl" />
+        <img src={androidApp} class="max-w-lg w-9/12 rounded-lg shadow-2xl" />
         <div>
           <h1 class="text-5xl font-bold">Download Our App</h1>
           <p class="py-6">
