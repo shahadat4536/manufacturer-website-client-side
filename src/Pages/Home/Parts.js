@@ -43,8 +43,8 @@ const Parts = () => {
         <span className="text-5xl ">Products</span>
       </h2>
       <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5  ">
-        {partsData.map((partData) => (
-          <PartsData key={partData._id} partData={partData}></PartsData>
+        {partsData?.map((partData) => (
+          <PartsData partData={partData}></PartsData>
         ))}
       </div>
     </div>
