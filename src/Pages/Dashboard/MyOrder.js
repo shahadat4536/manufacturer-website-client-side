@@ -24,7 +24,22 @@ const MyOrder = () => {
   if (isLoading || loading) {
     return <Loading></Loading>;
   }
+  const handleDelete = (id) => {
+    console.log(id);
+    const url = `http://localhost:5000/order/${id}`;
+    fetch(url, {
+      method: "DELETE",
 
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+        console.log(data);
+      });
+  };
   return (
     // <div>
     //   <h2>MyOrder</h2>
@@ -33,7 +48,7 @@ const MyOrder = () => {
     //   ))}
     // </div>
     <div class="overflow-x-auto">
-      <table class="table w-full">
+      <table class="table table-compact w-1/2 ">
         <thead>
           <tr>
             <th></th>
@@ -41,13 +56,14 @@ const MyOrder = () => {
             <th>Order Quantity</th>
             <th>Payment Amount</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {myOrderDatas.map((myOrderData, index) => (
             <tr>
               <th>{index + 1}</th>
-              <td>{myOrderData.product}</td>
+              <td className="text-xs">{myOrderData.product}</td>
               <td>{myOrderData.quantity}</td>
               <td>{myOrderData.paymentAmount}</td>
               <td>
@@ -61,14 +77,22 @@ const MyOrder = () => {
                     <p>
                       <span className="text-success">paid</span>
                     </p>
-                    <p>
-                      Transaction id:{" "}
+                    <p className="text-xs">
+                      TrxId:{" "}
                       <span className="test-success">
                         {myOrderData.transactionId}
                       </span>
                     </p>
                   </div>
                 )}
+              </td>
+              <td>
+                <button
+                  onClick={() => handleDelete(myOrderData._id)}
+                  className="btn btn-xs"
+                >
+                  Cancel Order
+                </button>
               </td>
             </tr>
           ))}
