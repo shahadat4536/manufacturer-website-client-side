@@ -52,4 +52,3 @@ const Parts = () => {
 };
 
 export default Parts;
-<h2>Parts</h2>;
