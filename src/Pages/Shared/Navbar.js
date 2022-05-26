@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Children } from "react";
 import { NavLink } from "react-router-dom";
 import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -64,11 +64,14 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
+
         <a class="btn btn-ghost normal-case text-xl">Crypto Computer</a>
       </div>
+
       <div class="navbar-end hidden lg:flex">
         <ul class="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
+
       <div className="navbar-end lg:hidden">
         <label tabindex="1" for="dashboard-sidebar" class="btn btn-ghost ">
           <svg

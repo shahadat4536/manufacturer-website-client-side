@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
@@ -10,13 +10,18 @@ import { toast } from "react-toastify";
 const BuyParts = () => {
   const { id } = useParams();
   const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
   const [rQuantity, setRQuantity] = useState("");
   console.log(rQuantity);
-  const { data: buyPartsData, isLoading } = useQuery("buyParts", () =>
+  const {
+    data: buyPartsData,
+    isLoading,
+    refetch,
+  } = useQuery("buyParts", () =>
     fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
   );
 
-  const { name, img, description, minOrder, availableQuantity, price } =
+  const { name, img, description, minOrder, availableQuantity, price, _id } =
     buyPartsData || {};
   const {
     register,
@@ -54,27 +59,30 @@ const BuyParts = () => {
         },
       })
         .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
+        .then((result) => {
+          console.log(result);
           const updateQuantityC = availableQuantity - currentQuantity;
           const updateQuantity = Number(updateQuantityC);
 
           console.log(updateQuantity, id);
-          // fetch(`http://localhost:5000/order/${id}`);
-          // fetch(`http://localhost:5000/order/${id}`, {
-          //   method: "PUT",
-          //   body: JSON.stringify({
-          //     availableQuantity: updateQuantity,
-          //   }),
-          //   headers: {
-          //     "Content-type": "application/json; charset=UTF-8",
-          //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          //   },
-          // })
-          //   .then((rsc) => rsc.json())
-          //   .then((data) => {
-          //     console.log("update quantity", data);
-          //   });
+
+          fetch(`http://localhost:5000/order/${id}`, {
+            method: "PUT",
+            body: JSON.stringify({
+              availableQuantity: updateQuantity,
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          })
+            .then((rsc) => rsc.json())
+            .then((data) => {
+              refetch();
+              navigate(`/dashboard/payment/${result.insertedId}`);
+
+              console.log("update quantity", data);
+            });
         });
     }
   };
