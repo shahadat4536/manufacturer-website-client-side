@@ -31,9 +31,12 @@ const Parts = () => {
         <span className="text-5xl ">Products</span>
       </h2>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-28 ">
-        {partsData.map((partData) => (
-          <PartsData key={partData} partData={partData}></PartsData>
-        ))}
+        {partsData
+          .slice(0, 6)
+          .reverse()
+          .map((partData) => (
+            <PartsData key={partData} partData={partData}></PartsData>
+          ))}
       </div>
     </div>
   );

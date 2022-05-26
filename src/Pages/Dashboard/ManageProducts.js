@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import Loading from "../Shared/Loading";
+import DeleteConfirmModalAdmin from "./DeleteConfirmModalAdmin";
 
 const ManageProducts = () => {
+  const [orderDelete, setOrderDelete] = useState(null);
   const {
     isLoading,
     error,
@@ -23,6 +26,24 @@ const ManageProducts = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
+  const handleDelete = (id) => {
+    console.log(id);
+    const url = `http://localhost:5000/parts/${id}`;
+    fetch(url, {
+      method: "DELETE",
+
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setOrderDelete(null);
+        refetch();
+        toast.success("Delete Successfully");
+        console.log("admin", data);
+      });
+  };
   return (
     <div>
       <h2>Manage Products</h2>
@@ -52,7 +73,7 @@ const ManageProducts = () => {
                       </div>
                     </div>
                     <div>
-                      <div class="font-bold">{partData.name}</div>
+                      <div class="font-xs">{partData.name}</div>
                     </div>
                   </div>
                 </td>
@@ -68,12 +89,29 @@ const ManageProducts = () => {
                   <button class="btn btn-ghost btn-xs">Update</button>
                 </th>
                 <th>
-                  <button class="btn btn-ghost btn-xs">Delete</button>
+                  {/* <label
+                    onClick={() => setOrderDelete(partData)}
+                    for="delete-confirm-modal"
+                    class="btn modal-button btn-xs btn-error"
+                  >
+                    Cancel Order
+                  </label> */}
+                  <button
+                    onClick={() => handleDelete(partData._id)}
+                    className="btn btn-xs btn-error"
+                  >
+                    Delete
+                  </button>
                 </th>
               </tr>
             ))}
           </tbody>
         </table>
+        {/* <DeleteConfirmModalAdmin
+          orderDelete={orderDelete}
+          refetch={refetch}
+          setOrderDelete={setOrderDelete}
+        ></DeleteConfirmModalAdmin> */}
       </div>
     </div>
   );
