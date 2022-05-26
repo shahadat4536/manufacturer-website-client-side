@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 const MyOrder = () => {
   const [user, loading] = useAuthState(auth);
+  const [orderDelete, setOrderDelete] = useState(null);
   const {
     isLoading,
     error,
@@ -24,22 +26,7 @@ const MyOrder = () => {
   if (isLoading || loading) {
     return <Loading></Loading>;
   }
-  const handleDelete = (id) => {
-    console.log(id);
-    const url = `http://localhost:5000/order/${id}`;
-    fetch(url, {
-      method: "DELETE",
 
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        refetch();
-        console.log(data);
-      });
-  };
   return (
     // <div>
     //   <h2>MyOrder</h2>
@@ -87,17 +74,25 @@ const MyOrder = () => {
                 )}
               </td>
               <td>
-                <button
-                  onClick={() => handleDelete(myOrderData._id)}
-                  className="btn btn-xs"
+                <label
+                  onClick={() => setOrderDelete(myOrderData)}
+                  for="delete-confirm-modal"
+                  class="btn modal-button btn-xs btn-error"
                 >
                   Cancel Order
-                </button>
+                </label>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {orderDelete && (
+        <DeleteConfirmModal
+          orderDelete={orderDelete}
+          refetch={refetch}
+          setOrderDelete={setOrderDelete}
+        ></DeleteConfirmModal>
+      )}
     </div>
   );
 };
