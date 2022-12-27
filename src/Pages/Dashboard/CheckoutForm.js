@@ -23,13 +23,16 @@ const CheckoutForm = ({ orders }) => {
   //     paymentAmount
   //   );
   useEffect(() => {
-    fetch("https://stark-cliffs-55109.herokuapp.com/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({ paymentAmount }),
-    })
+    fetch(
+      "https://manufacturer-website-server-side-amb7.onrender.com/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ paymentAmount }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -80,14 +83,17 @@ const CheckoutForm = ({ orders }) => {
         order: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://stark-cliffs-55109.herokuapp.com/orders/${_id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(payment),
-      })
+      fetch(
+        `https://manufacturer-website-server-side-amb7.onrender.com/orders/${_id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(payment),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);

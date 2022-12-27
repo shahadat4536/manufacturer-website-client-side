@@ -18,9 +18,9 @@ const BuyParts = () => {
     isLoading,
     refetch,
   } = useQuery("buyParts", () =>
-    fetch(`https://stark-cliffs-55109.herokuapp.com/parts/${id}`).then((res) =>
-      res.json()
-    )
+    fetch(
+      `https://manufacturer-website-server-side-amb7.onrender.com/parts/${id}`
+    ).then((res) => res.json())
   );
 
   const { name, img, description, minOrder, availableQuantity, price, _id } =
@@ -48,21 +48,24 @@ const BuyParts = () => {
       return;
     } else {
       const paymentAmount = currentQuantity * price;
-      fetch("https://stark-cliffs-55109.herokuapp.com/orders", {
-        method: "POST",
-        body: JSON.stringify({
-          product: name,
-          quantity: currentQuantity,
-          paymentAmount: paymentAmount,
-          email: user.email,
-          billerName: user.displayName,
-          billerPhone: data.phone,
-          billerAdders: data.adders,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
+      fetch(
+        "https://manufacturer-website-server-side-amb7.onrender.com/orders",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            product: name,
+            quantity: currentQuantity,
+            paymentAmount: paymentAmount,
+            email: user.email,
+            billerName: user.displayName,
+            billerPhone: data.phone,
+            billerAdders: data.adders,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      )
         .then((res) => res.json())
         .then((result) => {
           console.log(result);
@@ -71,16 +74,19 @@ const BuyParts = () => {
 
           console.log(updateQuantity, id);
 
-          fetch(`https://stark-cliffs-55109.herokuapp.com/order/${id}`, {
-            method: "PUT",
-            body: JSON.stringify({
-              availableQuantity: updateQuantity,
-            }),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          })
+          fetch(
+            `https://manufacturer-website-server-side-amb7.onrender.com/order/${id}`,
+            {
+              method: "PUT",
+              body: JSON.stringify({
+                availableQuantity: updateQuantity,
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+            }
+          )
             .then((rsc) => rsc.json())
             .then((data) => {
               refetch();

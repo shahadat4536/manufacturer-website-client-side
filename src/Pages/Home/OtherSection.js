@@ -8,7 +8,7 @@ const OtherSection = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-7 my-8">
       <div>
-        <div class="card lg:max-w-lg bg-base-100 shadow-xl py-10  bg-gradient-to-r from-teal-100 via-teal-200 to-green-300">
+        <div class="card lg:max-w-lg bg-base-100 shadow-xl py-10  bg-slate-100">
           <div class=" flex  justify-evenly">
             <div>
               <img className="" src={img1} alt="" />
@@ -23,7 +23,7 @@ const OtherSection = () => {
         </div>
       </div>
       <div>
-        <div class="card lg:max-w-lg bg-base-100 shadow-xl py-10 bg-gradient-to-r from-teal-100 via-teal-200 to-green-300">
+        <div class="card lg:max-w-lg bg-base-100 shadow-xl py-10 bg-slate-100">
           <div class=" flex  justify-evenly">
             <div>
               <img className="" src={img2} alt="" />
@@ -38,7 +38,7 @@ const OtherSection = () => {
         </div>
       </div>
       <div>
-        <div class="card lg:max-w-lg bg-base-100 shadow-xl py-10 bg-gradient-to-r from-teal-100 via-teal-200 to-green-300">
+        <div class="card lg:max-w-lg bg-base-100 shadow-xl py-10 bg-slate-100">
           <div class=" flex  justify-evenly">
             <div>
               <img className="" src={img3} alt="" />
@@ -53,7 +53,7 @@ const OtherSection = () => {
         </div>
       </div>
       <div>
-        <div class="card lg:max-w-lg bg-base-100 shadow-xl py-10 bg-gradient-to-r from-teal-100 via-teal-200 to-green-300">
+        <div class="card lg:max-w-lg bg-base-100 shadow-xl py-10 bg-slate-100">
           <div class=" flex  justify-evenly">
             <div>
               <img className="" src={img4} alt="" />

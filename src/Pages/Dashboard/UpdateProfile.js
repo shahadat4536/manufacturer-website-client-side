@@ -9,7 +9,7 @@ import auth from "../../firebase.init";
 const UpdateProfile = () => {
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
-  const url = `https://stark-cliffs-55109.herokuapp.com/user/${user.email}`;
+  const url = `https://manufacturer-website-server-side-amb7.onrender.com/user/${user.email}`;
   const {
     data: userData,
     isLoading,
@@ -38,7 +38,7 @@ const UpdateProfile = () => {
       phone: data.phone,
       linkedin: data.linkedin,
     };
-    const url = `https://stark-cliffs-55109.herokuapp.com/user/${user.email}`;
+    const url = `https://manufacturer-website-server-side-amb7.onrender.com/user/${user.email}`;
     console.log(updateUserData);
     fetch(url, {
       method: "PUT",

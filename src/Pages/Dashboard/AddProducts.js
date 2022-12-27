@@ -28,21 +28,24 @@ const AddProducts = () => {
         if (result.success) {
           const img = result.data.url;
           console.log(img);
-          fetch("https://stark-cliffs-55109.herokuapp.com/parts", {
-            method: "POST",
-            body: JSON.stringify({
-              img: img,
-              name: data.name,
-              description: data.description,
-              minOrder: data.minOrder,
-              availableQuantity: data.availableQuantity,
-              price: data.price,
-            }),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          })
+          fetch(
+            "https://manufacturer-website-server-side-amb7.onrender.com/parts",
+            {
+              method: "POST",
+              body: JSON.stringify({
+                img: img,
+                name: data.name,
+                description: data.description,
+                minOrder: data.minOrder,
+                availableQuantity: data.availableQuantity,
+                price: data.price,
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               toast.success("Products Add Successfully");

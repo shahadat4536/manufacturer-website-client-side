@@ -9,7 +9,7 @@ const AllUsers = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("https://stark-cliffs-55109.herokuapp.com/user", {
+    fetch("https://manufacturer-website-server-side-amb7.onrender.com/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -20,8 +20,8 @@ const AllUsers = () => {
     return <Loading></Loading>;
   }
   return (
-    <div class="overflow-x-auto">
-      <table class="table table-normal lg:w-full ">
+    <div class="overflow-visible">
+      <table class="table sm:table-fixed ">
         <thead>
           <tr>
             <th></th>

@@ -1,32 +1,24 @@
 import React from "react";
-import Banner1 from "../../assets/fire-boltt-available-now-982x500.jpg";
-import Banner2 from "../../assets/free-home-delivery-982x500.jpg";
+import Banner1 from "../../assets/banner-1.jpg";
+import Banner2 from "../../assets/banner-2.jpg";
+import Banner3 from "../../assets/banner-3.jpg";
 
 const Banner = () => {
   return (
-    <div>
-      <div className="carousel h-1/4 w-full ">
-        <div id="slide1" className="carousel-item relative w-full">
-          <img src={Banner1} className="w-full" />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide4" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide2" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-        <div id="slide2" className="carousel-item relative w-full">
-          <img src={Banner2} className="w-full" />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide1" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide3" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
+    <div
+      class="hero min-h-screen"
+      style={{ backgroundImage: `url(${Banner3})` }}
+    >
+      <div class="hero-overlay bg-opacity-60"></div>
+      <div class="hero-content text-center text-neutral-content">
+        <div class="max-w-md">
+          <h1 class="mb-5 text-5xl font-bold">Welcome to</h1>
+          <h1 className="pt-6 mb-5 text-5xl font-bold">Crypto Computer</h1>
+          {/* <p class="mb-5">
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
+            a id nisi.
+          </p> */}
         </div>
       </div>
     </div>

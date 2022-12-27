@@ -12,7 +12,7 @@ const ManageProducts = () => {
     data: partsData,
     refetch,
   } = useQuery("partsData", () =>
-    fetch("https://stark-cliffs-55109.herokuapp.com/parts", {
+    fetch("https://manufacturer-website-server-side-amb7.onrender.com/parts", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -28,7 +28,7 @@ const ManageProducts = () => {
   }
   const handleDelete = (id) => {
     console.log(id);
-    const url = `https://stark-cliffs-55109.herokuapp.com/parts/${id}`;
+    const url = `https://manufacturer-website-server-side-amb7.onrender.com/parts/${id}`;
     fetch(url, {
       method: "DELETE",
 

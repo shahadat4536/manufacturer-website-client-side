@@ -13,7 +13,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { id } = useParams();
 
-  const url = `https://stark-cliffs-55109.herokuapp.com/orders/${id}`;
+  const url = `https://manufacturer-website-server-side-amb7.onrender.com/orders/${id}`;
   const {
     data: orders,
     isLoading,

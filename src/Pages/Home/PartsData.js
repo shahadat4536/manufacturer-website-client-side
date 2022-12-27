@@ -32,7 +32,7 @@ const PartsData = ({ partData }) => {
     // </div>
     <div class="card card-compact max-w-lg bg-base-100 shadow-xl">
       <figure>
-        <img src={partData.img} alt="Shoes" />
+        <img className="w-[228px] h-[228px]" src={partData.img} alt="Shoes" />
       </figure>
       <div class="card-body">
         <h2 class="card-title">{partData.name}</h2>

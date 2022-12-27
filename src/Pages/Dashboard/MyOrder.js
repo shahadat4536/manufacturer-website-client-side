@@ -15,12 +15,15 @@ const MyOrder = () => {
     data: myOrderDatas,
     refetch,
   } = useQuery(["myOrderDatas", user.email], () =>
-    fetch(`https://stark-cliffs-55109.herokuapp.com/order/${user.email}`, {
-      method: "GET",
-      headers: {
-        // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://manufacturer-website-server-side-amb7.onrender.com/order/${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => res.json())
   );
 
   if (isLoading || loading) {

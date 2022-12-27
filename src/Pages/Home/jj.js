@@ -11,7 +11,7 @@
 //   const { id } = useParams();
 //   const [user, loading, error] = useAuthState(auth);
 //   const { data: buyPartsData, isLoading } = useQuery("buyParts", () =>
-//     fetch(`https://stark-cliffs-55109.herokuapp.com/parts/${id}`).then((res) => res.json())
+//     fetch(`https://manufacturer-website-server-side-amb7.onrender.com/parts/${id}`).then((res) => res.json())
 //   );
 
 //   const { name, img, description, minOrder, availableQuantity, price } =
@@ -40,7 +40,7 @@
 //       return;
 //     } else {
 //       const paymentAmount = orderQuantity * price;
-//       fetch("https://stark-cliffs-55109.herokuapp.com/orders", {
+//       fetch("https://manufacturer-website-server-side-amb7.onrender.com/orders", {
 //         method: "POST",
 //         body: JSON.stringify({
 //           product: name,

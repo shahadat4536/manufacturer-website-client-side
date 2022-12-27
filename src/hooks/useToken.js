@@ -6,13 +6,16 @@ const useToken = (user) => {
     const email = user?.user?.email;
     const currentUser = { email: email };
     if (email) {
-      fetch(`https://stark-cliffs-55109.herokuapp.com/user/${email}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-        body: JSON.stringify(currentUser),
-      })
+      fetch(
+        `https://manufacturer-website-server-side-amb7.onrender.com/user/${email}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(currentUser),
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           console.log(data);

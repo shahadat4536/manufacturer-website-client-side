@@ -9,7 +9,7 @@ const ManageAllOrder = () => {
     isLoading,
     refetch,
   } = useQuery("ordersData", () =>
-    fetch("https://stark-cliffs-55109.herokuapp.com/orders", {
+    fetch("https://manufacturer-website-server-side-amb7.onrender.com/orders", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

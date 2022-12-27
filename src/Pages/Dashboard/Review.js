@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const Review = () => {
@@ -18,18 +19,23 @@ const Review = () => {
       review: data.review,
       ratting: data.ratting,
     };
-    fetch("https://stark-cliffs-55109.herokuapp.com/reviews", {
-      method: "POST",
-      body: JSON.stringify(reviews),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      "https://manufacturer-website-server-side-amb7.onrender.com/reviews",
+      {
+        method: "POST",
+        body: JSON.stringify(reviews),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
       });
+    reset();
+    toast.success("Review add successfully");
   };
   return (
     <div className=" flex justify-center items-center my-10">

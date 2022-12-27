@@ -1,5 +1,5 @@
 import React, { Children } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
@@ -14,26 +14,31 @@ const Navbar = ({ children }) => {
   const menuItems = (
     <>
       <li>
-        <NavLink className="mx-1" to="/">
+        <NavLink className="mx-1 rounded-lg" to="/">
           Home
         </NavLink>
-        <NavLink className="mx-1" to="/blog">
+        <NavLink className="mx-1 rounded-lg" to="/all-parts">
+          All Parts
+        </NavLink>
+        <NavLink className="mx-1 rounded-lg" to="/blog">
           Blog
         </NavLink>
-        <NavLink className="mx-1" to="/myportFolio">
+        <NavLink className="mx-1 rounded-lg" to="/myportFolio">
           PortFolio
         </NavLink>
         {user && (
-          <NavLink className="mx-1" to="/dashboard">
+          <NavLink className="mx-1 rounded-lg" to="/dashboard">
             Dashboard
           </NavLink>
         )}
         {user ? (
-          <button onClick={logout} class="btn btn-ghost">
+          <button onClick={logout} class="btn btn-ghost rounded-lg">
             Sign Out
           </button>
         ) : (
-          <NavLink to="/login">Login</NavLink>
+          <NavLink className="rounded-lg" to="/login">
+            Login
+          </NavLink>
         )}
       </li>
     </>
@@ -122,7 +127,12 @@ const Navbar = ({ children }) => {
               </label>
             </div>
           )}
-          <div class="flex-1 px-2 mx-2">Crypto Computer</div>
+          <Link
+            to="home"
+            class="flex-1 px-2 mx-2 text-3xl font-semibold hover:text-violet-700"
+          >
+            Crypto Computer
+          </Link>
           <div class="flex-none lg:hidden">
             <label for="my-drawer-3" class="btn btn-square btn-ghost">
               <svg

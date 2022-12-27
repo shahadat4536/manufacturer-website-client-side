@@ -13,7 +13,7 @@ const ManageAllOrderData = ({ orderData, index, refetch }) => {
     status,
   } = orderData;
   const handleOrderShipped = (id) => {
-    const url = `https://stark-cliffs-55109.herokuapp.com/orders/${id}`;
+    const url = `https://manufacturer-website-server-side-amb7.onrender.com/orders/${id}`;
     console.log(url);
     fetch(url, {
       method: "PUT",

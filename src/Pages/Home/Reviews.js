@@ -4,7 +4,7 @@ import Review from "../Home/Review";
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("https://stark-cliffs-55109.herokuapp.com/review")
+    fetch("https://manufacturer-website-server-side-amb7.onrender.com/review")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
